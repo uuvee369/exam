@@ -4,9 +4,8 @@ import Axios from "axios";
 
 
 function App() {
-  const [name, setName] = useState("");
-  const [gmail, setGmail] = useState("");
-  const [password, setPass] = useState(0);
+  const [n, setN] = useState("");
+  const [l, setl] = useState("");
  
   const [userList, setUserList] = useState([]);
 
@@ -18,17 +17,17 @@ function App() {
 
   const addUser = () => {
     Axios.post("http://localhost:3333/create", {
-      name: name,
-      gmail: gmail,
-      password: password,
+      n: n,
+      l: l,
+
       
     }).then(() => {
       setUserList([
         ...userList,
         {
-          name: name,
-          gmail: gmail,
-          password: password,
+          n: n,
+          l: l,
+
         },
       ]);
     });
@@ -52,29 +51,18 @@ function App() {
               className="form-control"
               placeholder="Enter name"
               onChange={(event) => {
-                setName(event.target.value)
+                setN(event.target.value)
               }}
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="age">email:</label>
+            <label htmlFor="age">lastname:</label>
             <input
               type="text"
               className="form-control"
-              placeholder="Enter email"
+              placeholder="Enter last name"
               onChange={(event) => {
-                setGmail(event.target.value)
-              }}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="country">password:</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter password"
-              onChange={(event) => {
-                setPass(event.target.value)
+                setl(event.target.value)
               }}
             />
           </div>
@@ -96,9 +84,8 @@ function App() {
           return (
             <div className="employee card">
               <div className="card-body text-left">
-                <p className="card-text">Name: {val.name}</p>
-                <p className="card-text">gmail: {val.gmail}</p>
-                <p className="card-text">password: {val.password}</p>
+                <p className="card-text">Name: {val.n}</p>
+                <p className="card-text">lastname: {val.l}</p>
                
               </div>
             </div>

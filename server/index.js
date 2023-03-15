@@ -20,13 +20,13 @@ if(process.env.NODE_ENV == 'production')  {
 const connection = mysql.createConnection({
   host: host,
   user: 'root',
-  password: '1234456789',
-  database: 'employeesSystem'
+  password: '1234',
+  database: 'db'
 });
 
 app.get('/User', function (req, res, next) {
     connection.query(
-  'SELECT * FROM User',
+  'SELECT * FROM tb',
   function(err, results, fields) {
     res.json(results);
     
@@ -39,8 +39,8 @@ app.get('/User', function (req, res, next) {
 
 app.post("/create", (req, res) => {
   connection.query(
-    "INSERT INTO User (name, gmail, password) VALUES (?,?,?)",
-    [req.body.name,  req.body.gmail, req.body.password],
+    "INSERT INTO tb (n, l) VALUES (?,?)",
+    [req.body.n,  req.body.l,],
     (err, result) => {
       if (err) {
         console.log(err);
